@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+       stage ('Deployments'){
+         
+
+            stage ("Deploy to Production"){
+                steps {
+                    sh "scp -i /home/jenkins/tomcat-demo.pem **/target/*.waranasigbaria@34.209.233.6:/var/lib/tomcat8/webapps"
+                }
+            }
+            
+            
+        
+    }
+}

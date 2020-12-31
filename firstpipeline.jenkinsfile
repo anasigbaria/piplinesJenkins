@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+       stage('Copy Archive') {
+         steps {
+             script {
+                 step ([$class: 'CopyArtifact',
+                 projectName: 'prevJob',
+                 filter: "**/*.war",
+                 target: 'target']);
+             }
+             
+             archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
+         }
+        }
+    }
+}
